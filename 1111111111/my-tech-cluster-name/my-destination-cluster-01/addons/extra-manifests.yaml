@@ -7,17 +7,17 @@ spec:
   destination:
     name: in-cluster
   project: default
-source:
-  repoURL: https://github.com/gareji/argocd.git
-  path: 1111111111/my-tech-cluster-name/my-destination-cluster-01/addons/extra-manifests
-  targetRevision: main
-  directory:
-    recurse: true
-    jsonnet: {}
-  syncPolicy:
-    automated:
-      enabled: true
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - PruneLast=true
+  source:
+    repoURL: https://github.com/gareji/argocd.git
+    path: 1111111111/my-tech-cluster-name/my-destination-cluster-01/addons/extra-manifests
+    targetRevision: main
+    directory:
+      recurse: true
+      jsonnet: {}
+    syncPolicy:
+      automated:
+        enabled: true
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - PruneLast=true
