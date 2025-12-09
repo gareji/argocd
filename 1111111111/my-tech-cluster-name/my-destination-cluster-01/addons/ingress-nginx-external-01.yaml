@@ -13,7 +13,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: guestbook
+    namespace: guestbook-2
 
   syncPolicy:
     automated:
