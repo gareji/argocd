@@ -3,8 +3,8 @@ kind: Application
 metadata:
   name: terraform-addons-tech
   namespace: argocd
-project: default
 spec:
+  project: default
   source:
     repoURL: https://github.com/gareji/argocd.git
     path: 1111111111/my-tech-cluster-name
