@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ingress-nginx-controller-internal-02
+  namespace: default
+spec:
+  ports:
+    - name: ingress-http
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: ingress-nginx-internal-02
+    app.kubernetes.io/name: ingress-nginx
+  type: ClusterIP
