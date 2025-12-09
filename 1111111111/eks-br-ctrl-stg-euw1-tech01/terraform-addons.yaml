@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/gareji/argocd.git
     path: 1111111111/my-tech-cluster-name
-    targetRevision: staging
+    targetRevision: main
     directory:
       include: '**/addons/*'
       recurse: false
