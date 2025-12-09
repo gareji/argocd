@@ -14,10 +14,10 @@ spec:
     directory:
       recurse: true
       jsonnet: {}
-    syncPolicy:
-      automated:
-        enabled: true
-        prune: true
-        selfHeal: true
-      syncOptions:
-        - PruneLast=true
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - PruneLast=true
