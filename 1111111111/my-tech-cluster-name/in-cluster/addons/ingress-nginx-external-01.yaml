@@ -1,37 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ingress-nginx-tech
+  name: ingress-nginx-my-tech-cluster
   namespace: argocd
-  labels:
-    Component: ingress-nginx
-    Environment: my-destination-cluster-01
-    project: default
-    Region: eu-west-1
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
 spec:
-  destination:
-    name: in-cluster
-    namespace: ingress-nginx
   project: default
-  sources:
-    - repoURL: https://kubernetes.github.io/ingress-nginx
-      chart: ingress-nginx
-      targetRevision: 4.13.2
-      helm:
-        releaseName: ingress-nginx-tech
-        values: |
-          controller:
-            ingressClassResource:
-              name: nginx-tech
-              default: false
-              controllerValue: k8s.io/nginx-tech
-            ingressClass: nginx-tech
+
+  source:
+    repoURL: https://github.com/argoproj/argocd-example-apps.git
+    targetRevision: HEAD
+    path: guestbook
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: guestbook
+
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-      enabled: true
     syncOptions:
-      - PruneLast=true
+      - CreateNamespace=true

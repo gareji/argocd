@@ -11,7 +11,8 @@ spec:
     targetRevision: main
     directory:
       include: '**/addons/*'
-      recurse: false
+      exclude: '**/extra-manifests/*'
+      recurse: true
       jsonnet: {}
   destination:
     name: in-cluster

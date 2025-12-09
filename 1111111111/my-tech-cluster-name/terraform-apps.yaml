@@ -11,7 +11,8 @@ spec:
     targetRevision: main
     directory:
       include: '**/apps/*'
-      recurse: false
+      exclude: '**/extra-manifests/*'
+      recurse: true
       jsonnet: {}
   destination:
     name: in-cluster
