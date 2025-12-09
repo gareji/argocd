@@ -6,7 +6,7 @@ metadata:
   labels:
     Component: ingress-nginx
     Environment: my-destination-cluster-01
-    Project: infra-system
+    project: default
     Region: eu-west-1
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -14,7 +14,7 @@ spec:
   destination:
     name: in-cluster
     namespace: ingress-nginx
-  project: infra-system
+  project: default
   sources:
     - repoURL: https://kubernetes.github.io/ingress-nginx
       chart: ingress-nginx

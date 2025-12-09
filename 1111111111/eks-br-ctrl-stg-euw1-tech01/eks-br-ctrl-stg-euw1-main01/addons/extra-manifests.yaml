@@ -5,8 +5,8 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    name: eks-my-destination-cluster-01
-  project: infra
+    name: in-cluster
+  project: default
 source:
   repoURL: https://github.com/gareji/argocd.git
   path: 1111111111/my-tech-cluster-name/my-destination-cluster-01/addons/extra-manifests
