@@ -1,0 +1,18 @@
+project: infra
+source:
+  repoURL: https://github.com/gareji/argocd.git
+  path: 1111111111/my-tech-cluster-name
+  targetRevision: staging
+  directory:
+    include: '**/apps/*'
+    recurse: false
+    jsonnet: {}
+destination:
+  name: in-cluster
+syncPolicy:
+  automated:
+    prune: true
+    selfHeal: true
+    enabled: true
+  syncOptions:
+    - PruneLast=true

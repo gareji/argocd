@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: plain-my-destination-cluster-01
+  namespace: argocd
+spec:
+  destination:
+    name: eks-my-destination-cluster-01
+  project: infra
+source:
+  repoURL: https://github.com/gareji/argocd.git
+  path: 1111111111/my-tech-cluster-name/my-destination-cluster-01/addons/extra-manifests
+  targetRevision: staging
+  directory:
+    recurse: true
+    jsonnet: {}
+  syncPolicy:
+    automated:
+      enabled: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - PruneLast=true

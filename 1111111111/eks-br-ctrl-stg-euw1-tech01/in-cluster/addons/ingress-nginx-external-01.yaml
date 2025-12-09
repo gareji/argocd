@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx-tech
+  namespace: argocd
+  labels:
+    Component: ingress-nginx
+    Environment: my-destination-cluster-01
+    Project: infra-system
+    Region: eu-west-1
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    name: in-cluster
+    namespace: ingress-nginx
+  project: infra-system
+  sources:
+    - repoURL: https://kubernetes.github.io/ingress-nginx
+      chart: ingress-nginx
+      targetRevision: 4.13.2
+      helm:
+        releaseName: ingress-nginx-tech
