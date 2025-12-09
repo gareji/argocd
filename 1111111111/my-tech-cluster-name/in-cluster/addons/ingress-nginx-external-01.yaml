@@ -21,6 +21,13 @@ spec:
       targetRevision: 4.13.2
       helm:
         releaseName: ingress-nginx-tech
+        values: |
+          controller:
+            ingressClassResource:
+              name: nginx-tech
+              default: false
+              controllerValue: k8s.io/nginx-tech
+            ingressClass: nginx-tech
   syncPolicy:
     automated:
       prune: true

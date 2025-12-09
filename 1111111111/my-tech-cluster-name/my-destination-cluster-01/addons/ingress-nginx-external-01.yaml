@@ -21,6 +21,13 @@ spec:
       targetRevision: 4.13.2
       helm:
         releaseName: ingress-nginx-external-01
+        values: |
+          controller:
+            ingressClassResource:
+              name: nginx-internal-01
+              default: false
+              controllerValue: k8s.io/nginx-internal-01
+            ingressClass: nginx-internal-01
   syncPolicy:
     automated:
       prune: true
