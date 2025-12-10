@@ -35,20 +35,20 @@ spec:
   template:
     metadata:
       # Name = cluster + type
-      name: '{{.cluster.basename}}-{{.type.basename}}'
+      name: '{{.cluster.path.basename}}-{{.type.path.basename}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/gareji/argocd.git
         targetRevision: main
         # The second path (apps/addons)
-        path: 'broadway-central/staging/{{.cluster.basename}}/{{.type.basename}}'
+        path: 'broadway-central/staging/{{.cluster.path.basename}}/{{.type.path.basename}}'
         directory:
           recurse: true
           jsonnet: {}
       destination:
-        server: in-cluster
-        namespace: 'argocd'
+        name: in-cluster
+        # namespace: 'argocd'
 
       syncPolicy:
         automated:
