@@ -11,7 +11,7 @@ spec:
     targetRevision: main
     directory:
       include: 'apps/*'
-      exclude: '**/extra-manifests/*'
+      exclude: 'addons/extra-manifests/*'
       recurse: true
       jsonnet: {}
   destination:
@@ -37,7 +37,7 @@ spec:
     targetRevision: main
     directory:
       include: 'addons/*'
-      exclude: '**/extra-manifests/*'
+      exclude: 'addons/extra-manifests/*'
       recurse: true
       jsonnet: {}
   destination:
