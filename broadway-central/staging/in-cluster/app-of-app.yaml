@@ -11,7 +11,7 @@ spec:
     path: broadway-central/staging/my-destination-cluster-01
     targetRevision: main
     directory:
-      include: '**/addons/*'
+      include: 'addons/*'
       exclude: '**/extra-manifests/*'
       recurse: true
       jsonnet: {}
