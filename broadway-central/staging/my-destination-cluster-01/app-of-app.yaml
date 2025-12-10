@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kuberentes-apps
+  name: kuberentes-apps-my-destination-cluster-01
   namespace: argocd
 spec:
   project: default
@@ -10,7 +10,33 @@ spec:
     path: broadway-central/staging/my-destination-cluster-01
     targetRevision: main
     directory:
-      include: '**/apps/*,**/addons/*'
+      include: '**/apps/*'
+      exclude: '**/extra-manifests/*'
+      recurse: true
+      jsonnet: {}
+  destination:
+    name: in-cluster
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+      enabled: true
+    syncOptions:
+      - PruneLast=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kuberentes-addons-my-destination-cluster-01
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/gareji/argocd.git
+    path: broadway-central/staging/my-destination-cluster-01
+    targetRevision: main
+    directory:
+      include: '**/addons/*'
       exclude: '**/extra-manifests/*'
       recurse: true
       jsonnet: {}

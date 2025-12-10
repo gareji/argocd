@@ -1,16 +1,17 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kuberentes-apps
+  name: kuberentes-addons-in-cluster
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/gareji/argocd.git
-    path: broadway-central/staging/in-cluster
+    path: broadway-central/staging/my-destination-cluster-01
     targetRevision: main
     directory:
-      include: '**/apps/*,**/addons/*'
+      include: '**/addons/*'
       exclude: '**/extra-manifests/*'
       recurse: true
       jsonnet: {}
