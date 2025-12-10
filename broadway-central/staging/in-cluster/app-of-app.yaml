@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kuberentes-addons-in-cluster
+  name: in-cluster-addons
   namespace: argocd
   labels:
     layer: "2"

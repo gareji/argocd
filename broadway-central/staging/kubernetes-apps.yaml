@@ -1,10 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kuberentes-apps
+  name: root-sync
   namespace: argocd
   labels:
     layer: "1"
+    managed-by: "terraform"
 spec:
   project: default
   source:
@@ -18,14 +19,5 @@ spec:
   destination:
     name: in-cluster
   syncPolicy:
-    automated:
-      prune: false
-      selfHeal: true
-      enabled: true
     syncOptions:
       - PruneLast=true
-  ignoreDifferences:
-    - group: argoproj.io
-      kind: Application
-      jsonPointers:
-        - /spec/syncPolicy/automated
