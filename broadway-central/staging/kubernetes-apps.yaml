@@ -19,8 +19,13 @@ spec:
     name: in-cluster
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true
       enabled: true
     syncOptions:
       - PruneLast=true
+  ignoreDifferences:
+    - group: argoproj.io
+      kind: Application
+      jsonPointers:
+        - /spec/syncPolicy/automated
