@@ -10,7 +10,8 @@ spec:
     path: broadway-central/staging
     targetRevision: main
     directory:
-      include: '**/app-of-app.yaml'
+      include: '**/apps/*'
+      exclude: '**/extra-manifests/*'
       recurse: true
       jsonnet: {}
   destination:

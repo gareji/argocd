@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: kuberentes-apps
   namespace: argocd
+  labels:
+    layer: "1"
 spec:
   project: default
   source:
@@ -10,8 +12,7 @@ spec:
     path: broadway-central/staging
     targetRevision: main
     directory:
-      include: '**/apps/*'
-      exclude: '**/extra-manifests/*'
+      include: '**/app-of-app.yaml'
       recurse: true
       jsonnet: {}
   destination:

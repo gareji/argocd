@@ -3,6 +3,8 @@ kind: Application
 metadata:
   name: kuberentes-apps-my-destination-cluster-02
   namespace: argocd
+  labels:
+    layer: "2"
 spec:
   project: default
   source:
@@ -27,6 +29,8 @@ kind: Application
 metadata:
   name: kuberentes-addons-my-destination-cluster-02
   namespace: argocd
+  labels:
+    layer: "2"
 spec:
   project: default
   source:
