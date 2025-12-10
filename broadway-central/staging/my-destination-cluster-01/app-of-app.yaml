@@ -10,7 +10,6 @@ spec:
     path: broadway-central/staging/my-destination-cluster-01/apps
     targetRevision: main
     directory:
-      include: 'apps/*'
       recurse: true
       jsonnet: {}
   destination:
@@ -35,8 +34,7 @@ spec:
     path: broadway-central/staging/my-destination-cluster-01/addons
     targetRevision: main
     directory:
-      include: 'addons/*'
-      exclude: 'addons/extra-manifests/*'
+      exclude: 'extra-manifests/*'
       recurse: true
       jsonnet: {}
   destination:

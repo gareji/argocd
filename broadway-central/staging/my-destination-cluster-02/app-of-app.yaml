@@ -7,10 +7,9 @@ spec:
   project: default
   source:
     repoURL: https://github.com/gareji/argocd.git
-    path: broadway-central/staging/my-destination-cluster-02
+    path: broadway-central/staging/my-destination-cluster-02/apps
     targetRevision: main
     directory:
-      include: 'apps/*'
       recurse: true
       jsonnet: {}
   destination:
@@ -32,10 +31,9 @@ spec:
   project: default
   source:
     repoURL: https://github.com/gareji/argocd.git
-    path: broadway-central/staging/my-destination-cluster-02
+    path: broadway-central/staging/my-destination-cluster-02/addons
     targetRevision: main
     directory:
-      include: 'addons/*'
       exclude: 'addons/extra-manifests/*'
       recurse: true
       jsonnet: {}
