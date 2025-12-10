@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: broadway-staging-double-generator
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+
+          # -------------------------------
+          # 1) Discover clusters only
+          # -------------------------------
+          - git:
+              repoURL: https://github.com/gareji/argocd.git
+              revision: main
+              directories:
+                - path: broadway-central/staging/*
+              template:
+                cluster: "{{path.basename}}"
+
+          # -------------------------------
+          # 2) Discover cluster + component pairs
+          # -------------------------------
+          - git:
+              repoURL: https://github.com/gareji/argocd.git
+              revision: main
+              directories:
+                - path: broadway-central/staging/*/*
+              template:
+                cluster: "{{path[1].basename}}"
+                component: "{{path.basename}}"
+                fullpath: "{{path}}"
+
+  template:
+    metadata:
+      name: '{{cluster}}-{{component}}'
+    spec:
+      project: default
+
+      source:
+        repoURL: https://github.com/gareji/argocd.git
+        targetRevision: main
+        path: '{{fullpath}}'
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: 'argocd'
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

@@ -1,0 +1,56 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: broadway-staging-matrix
+  namespace: argocd
+spec:
+  generators:
+    - matrix:
+        generators:
+
+          # --- 1) CLUSTER GENERATOR ---
+          - git:
+              repoURL: https://github.com/gareji/argocd.git
+              revision: main
+              directories:
+                - path: broadway-central/staging/*
+              pathParamPrefix: cluster
+              # This returns:
+              # broadway-central/staging/cluster1
+              # broadway-central/staging/cluster2
+              # etc.
+
+          # --- 2) TYPE GENERATOR (apps/addons) ---
+          - git:
+              repoURL: https://github.com/gareji/argocd.git
+              revision: main
+              directories:
+                - path: broadway-central/staging/*/*
+              pathParamPrefix: type
+              # This returns:
+              # broadway-central/staging/cluster1/apps
+              # broadway-central/staging/cluster1/addons
+              # broadway-central/staging/cluster2/apps
+              # broadway-central/staging/cluster2/addons
+  template:
+    metadata:
+      # Name = cluster + type
+      name: '{{.cluster.basename}}-{{.type.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/gareji/argocd.git
+        targetRevision: main
+        # The second path (apps/addons)
+        path: 'broadway-central/staging/{{.cluster.basename}}/{{.type.basename}}'
+        directory:
+          recurse: true
+          jsonnet: {}
+      destination:
+        server: in-cluster
+        namespace: 'argocd'
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
