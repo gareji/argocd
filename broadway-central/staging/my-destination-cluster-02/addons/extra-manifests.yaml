@@ -1,21 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kubernetes-addons
+  name: plain-my-destination-cluster-02
   namespace: argocd
 spec:
+  destination:
+    name: in-cluster
   project: default
   source:
     repoURL: https://github.com/gareji/argocd.git
-    path: 1111111111/my-tech-cluster-name
+    path: broadway-central/staging/my-destination-cluster-02/addons/extra-manifests
     targetRevision: main
     directory:
-      include: '**/addons/*'
-      exclude: '**/extra-manifests/*'
       recurse: true
       jsonnet: {}
-  destination:
-    name: in-cluster
   syncPolicy:
     automated:
       prune: true

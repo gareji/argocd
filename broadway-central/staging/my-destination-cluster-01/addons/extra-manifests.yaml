@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/gareji/argocd.git
-    path: 1111111111/my-tech-cluster-name/my-destination-cluster-01/addons/extra-manifests
+    path: broadway-central/staging/my-destination-cluster-01/addons/extra-manifests
     targetRevision: main
     directory:
       recurse: true
