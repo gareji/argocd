@@ -13,7 +13,7 @@ spec:
     path: broadway-central/staging/in-cluster/addons
     targetRevision: main
     directory:
-      exclude: 'addons/extra-manifests/*'
+      exclude: 'extra-manifests/*'
       recurse: true
       jsonnet: {}
   destination:
