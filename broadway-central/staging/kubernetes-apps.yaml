@@ -18,4 +18,3 @@ spec:
       jsonnet: {}
   destination:
     name: in-cluster
-  syncPolicy:
