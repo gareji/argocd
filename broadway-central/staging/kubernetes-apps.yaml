@@ -19,5 +19,3 @@ spec:
   destination:
     name: in-cluster
   syncPolicy:
-    syncOptions:
-      - PruneLast=true

@@ -23,8 +23,7 @@ spec:
       prune: false
       selfHeal: true
       enabled: true
-    syncOptions:
-      - PruneLast=true
+
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -52,5 +51,3 @@ spec:
       prune: false
       selfHeal: true
       enabled: true
-    syncOptions:
-      - PruneLast=true
