@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: ingress-nginx-2
-  labels:
-    name: ingress-nginx-2
