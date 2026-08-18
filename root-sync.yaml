@@ -9,7 +9,7 @@ spec:
     - missingkey=error
   generators:
     - git:
-        repoURL: https://git.example.com/infrastructure/kubernetes.git
+        repoURL: https://github.com/gareji/argocd.git
         revision: HEAD
         directories:
           - path: apps/*
@@ -19,12 +19,11 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://git.example.com/infrastructure/kubernetes.git
+        repoURL: https://github.com/gareji/argocd.git
         targetRevision: HEAD
         path: '{{ .path.path }}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{ .path.basename }}'
       syncPolicy:
         automated:
           prune: true
