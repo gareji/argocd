@@ -62,7 +62,7 @@ spec:
 
               <body>
                 <div class="box">
-                  <h1>APPLICATION 1</h1>
+                  <h1>APPLICATION 2</h1>
                   <p>Served through Kubernetes Gateway API</p>
                   <p>Hostname: app2.example.local</p>
                 </div>
