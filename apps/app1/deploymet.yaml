@@ -5,28 +5,23 @@ metadata:
   namespace: sample-app1
 spec:
   replicas: 1
-
+  revisionHistoryLimit: 3
   selector:
     matchLabels:
       app: sample-app1
-
   template:
     metadata:
       labels:
         app: sample-app1
-
     spec:
       containers:
         - name: nginx
           image: nginx:alpine
-
           ports:
             - containerPort: 80
-
           command:
             - /bin/sh
             - -c
-
           args:
             - |
               mkdir -p /usr/share/nginx/html/app1
@@ -63,7 +58,7 @@ spec:
                   listen 80;
                   server_name _;
 
-                  
+
                   root /usr/share/nginx/html;
 
                   location /app1/ {
