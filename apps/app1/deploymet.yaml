@@ -62,7 +62,6 @@ spec:
               server {
                   listen 80;
                   server_name _;
-
                   root /usr/share/nginx/html;
 
                   location /app1/ {
