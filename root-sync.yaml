@@ -24,6 +24,7 @@ spec:
         path: '{{ .path.path }}'
       destination:
         server: https://kubernetes.default.svc
+      revisionHistoryLimit: 3
       syncPolicy:
         automated:
           prune: true

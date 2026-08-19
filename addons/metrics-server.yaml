@@ -18,6 +18,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
+  revisionHistoryLimit: 3
   syncPolicy:
     automated:
       prune: true

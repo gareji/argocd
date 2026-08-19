@@ -27,10 +27,10 @@ spec:
               protocol: HTTP
               namespacePolicy:
                 from: All
-
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
+  revisionHistoryLimit: 3
   syncPolicy:
     automated:
       prune: true
